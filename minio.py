@@ -9,7 +9,7 @@ from fastapi import UploadFile, HTTPException, File
 
 minio_client = boto3.client(
     's3',
-    endpoint_url = "http://localhost:9000",
+    endpoint_url = "http://minio:9000",
     aws_access_key_id = "minioadmin",
     aws_secret_access_key = "minioadmin",
     config = Config(signature_version='s3v4'),
@@ -18,7 +18,7 @@ minio_client = boto3.client(
 
 BUCKET_NAME = "files"
 
-ALLOWED_EXTENSIONS = {".dcm",".jpg",".jpeg",".png",".pdf"}
+ALLOWED_EXTENSIONS = {".dcm",".jpg",".jpeg",".png",".pdf",".mp4", ".avi", ".mov", ".mkv"}
 
 async def upload_and_get_url(file):
     _, ext = os.path.splitext(file.filename.lower())

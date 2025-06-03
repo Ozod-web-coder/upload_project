@@ -37,6 +37,11 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:1234@db:5432/upload_db
+
+      # Добавляем переменные для boto3/minio
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_SECRET_ACCESS_KEY: minioadmin
+      MINIO_ENDPOINT_URL: http://minio:9000
     depends_on:
       - db
       - minio
