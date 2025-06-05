@@ -4,6 +4,18 @@ from sqlalchemy.orm import relationship
 
 from database import engine, Base
 
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
+
+    files = relationship("Files", back_populates="user")
+
+
+
 class Files(Base):
     __tablename__ = "files"
 
@@ -15,13 +27,6 @@ class Files(Base):
 
     user = relationship("User", back_populates="files")
 
-class User(Base):
-    __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-
-    files = relationship("Files", back_populates="user")
 
 Base.metadata.create_all(bind=engine)

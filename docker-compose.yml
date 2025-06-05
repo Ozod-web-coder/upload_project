@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: upload_db
+      POSTGRES_DB: p_db
     ports:
       - "5432:5432"
     volumes:
@@ -36,7 +36,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+psycopg2://postgres:1234@db:5432/upload_db
+      DATABASE_URL: postgresql+psycopg2://postgres:1234@db:5432/p_db
 
       # Добавляем переменные для boto3/minio
       AWS_ACCESS_KEY_ID: minioadmin
