@@ -1,13 +1,20 @@
 import './App.css'
-import AuthForm from "./components/auth/Register.jsx";
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import Layout from "../Layout.jsx";
+import HomePage from "./components/main/HomePage.jsx";
 
 function App() {
-    const token = localStorage.getItem('token')
   return (
-    <>
-        {token ? '' : <AuthForm/>}
 
-    </>
+        <Router>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route path="/" element={<HomePage />} />
+                </Route>
+            </Routes>
+        </Router>
+
+
   )
 }
 
